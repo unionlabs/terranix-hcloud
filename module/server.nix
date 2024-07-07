@@ -116,8 +116,7 @@ in
                         type = "ssh";
                         user = "root";
                         host = "\${ self.ipv4_address }";
-                        private_key =
-                          ''''${ "${config.provisioner.privateKeyFile}" }'';
+                        private_key = config.provisioner.privateKeyFile;
                       };
                     } // provisioner.file);
                   } else if (builtins.hasAttr "remote-exec" provisioner) then {
@@ -126,8 +125,7 @@ in
                         type = "ssh";
                         user = "root";
                         host = "\${ self.ipv4_address }";
-                        private_key =
-                          ''''${ "${config.provisioner.privateKeyFile}" }'';
+                        private_key = config.provisioner.privateKeyFile;
                       };
                     } // provisioner.remote-exec);
                   } else
