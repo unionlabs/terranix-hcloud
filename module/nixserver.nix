@@ -2,13 +2,11 @@
 with lib;
 let
   cfg = config.hcloud.nixserver;
-
   nixosInfect = pkgs.fetchgit {
     "url" = "https://github.com/elitak/nixos-infect.git";
-    "rev" = "30441b1236a3f5e426b72ecf2ba2f4f91127ca0e";
-    "sha256" = "0k6z4wx8k03psbhm2mzm575z6gas2c6fl2pxpppwamjdvl0gv2an";
+    "rev" = "5ef3f953d32ab92405b280615718e0b80da2ebe6";
+    "sha256" = "sha256-D1qvAGyt7NIG3fzWvvJdkggCQwrm/gPzIJ/3ABHS9Sg=";
   };
-
 in
 {
 
@@ -105,7 +103,7 @@ in
             remote-exec.inline = [
               ''
                 NO_REBOOT="dont" \
-                PROVIDER=HCloud \
+                PROVIDER=hetznercloud \
                 NIX_CHANNEL=${configuration.channel} \
                 ${
                   optionalString (configuration.configurationFile != null)
