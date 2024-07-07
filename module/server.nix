@@ -117,7 +117,7 @@ in
                         user = "root";
                         host = "\${ hcloud_server.${configuration.name}.ipv4_address }";
                         private_key =
-                          ''''${ file("${config.provisioner.privateKeyFile}") }'';
+                          ''''${ "${config.provisioner.privateKeyFile}" }'';
                       };
                     } // provisioner.file);
                   } else if (builtins.hasAttr "remote-exec" provisioner) then {
@@ -127,7 +127,7 @@ in
                         user = "root";
                         host = "\${ hcloud_server.${configuration.name}.ipv4_address }";
                         private_key =
-                          ''''${ file("${config.provisioner.privateKeyFile}") }'';
+                          ''''${ "${config.provisioner.privateKeyFile}" }'';
                       };
                     } // provisioner.remote-exec);
                   } else
