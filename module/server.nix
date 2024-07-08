@@ -141,24 +141,14 @@ in
       let
         ipv4Address = mapAttrs'
           (ignore: configuration: {
-            name = "${configuration.name}_ipv4_address";
+            name = "${configuration.name}";
             value = {
               value = "\${ hcloud_server.${configuration.name}.ipv4_address }";
             };
           })
           cfg;
-
-        ipv6Address = mapAttrs'
-          (ignore: configuration: {
-            name = "${configuration.name}_ipv6_address";
-            value = {
-              value = "\${ hcloud_server.${configuration.name}.ipv6_address }";
-            };
-          })
-          cfg;
-
       in
-      ipv4Address // ipv6Address;
+      ipv4Address;
 
     resource.hcloud_ssh_key =
       let
